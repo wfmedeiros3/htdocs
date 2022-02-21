@@ -12,7 +12,11 @@ defined('BASEPATH') OR exit('Ação não permitida');
         
         public function index() {
             
+            $this->load->view('restrita/layout/header');
+
             $this->load->view('restrita/home/index');
+            
+            $this->load->view('restrita/layout/footer');
             
         }
     }
