@@ -44,30 +44,40 @@ class Usuarios extends CI_Controller {
         if (!$usuario_id) {
 
             // cadastrar usuario
-            
+
             exit('cadastrar usuario');
         } else {
 
             if (!$usuario = $this->ion_auth->user($usuario_id)->row()) {
-                
+
                 $this->session->set_flashdata('erro', 'Usuário não foi encontrado');
                 redirect('restrita/usuarios');
-             
             } else {
-                
-                $data = array (
-                    'titulo' => 'Editar usuário',
-                    'usuario' => $usuario,
-                    
-                    'perfil' => $this->ion_auth->get_users_groups($usuario_id)->row(),
-                    'grupos' => $this->ion_auth->groups()->result(),
-                );
 
-                $this->load->view('restrita/layout/header', $data);
+                //Edita o usuário
 
-                $this->load->view('restrita/usuarios/core');
+                $this->form_validation->set_rules('first_name', 'nome', 'trim|required');
 
-                $this->load->view('restrita/layout/footer');
+                if ($this->form_validation->run()) {
+                    echo '<pre>';
+                    print_r($this->input->post());
+                    exit();
+                } else {
+                    //erro de validação
+
+                    $data = array(
+                        'titulo' => 'Editar usuário',
+                        'usuario' => $usuario,
+                        'perfil' => $this->ion_auth->get_users_groups($usuario_id)->row(),
+                        'grupos' => $this->ion_auth->groups()->result(),
+                    );
+
+                    $this->load->view('restrita/layout/header', $data);
+
+                    $this->load->view('restrita/usuarios/core');
+
+                    $this->load->view('restrita/layout/footer');
+                }
             }
         }
     }

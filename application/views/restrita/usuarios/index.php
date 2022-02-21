@@ -19,8 +19,8 @@
 
                             <?php if ($message = $this->session->flashdata('erro')): ?>
 
-                                <div class="alert alert-danger alert-dismissible show fade">
-                                    <div class="alert-icon"><i class="far fa-lightbulb"></i></div>
+                                <div class="alert alert-danger alert-has-icon alert-dismissible show fade">
+                                    <div class="alert-icon"><i class="fa fa-exclamation-circle fa-lg"></i></div>
                                     <div class="alert-body">
                                         <div class="alert-title">Atenção</div>
                                         <button class="close" data-dismiss="alert">
