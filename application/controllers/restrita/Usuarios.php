@@ -49,7 +49,10 @@ class Usuarios extends CI_Controller {
         } else {
 
             if (!$usuario = $this->ion_auth->user($usuario_id)->row()) {
-                exit('Não existe');
+                
+                $this->session->set_flashdata('erro', 'Usuário não foi encontrado');
+                redirect('restrita/usuarios');
+             
             } else {
                 
                 $data = array (
