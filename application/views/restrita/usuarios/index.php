@@ -13,7 +13,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Basic DataTables</h4>
+                            <h4><?php echo $titulo; ?></h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -27,12 +27,11 @@
                                             <th>E-mail</th>
                                             <th>Usuário</th>
                                             <th>Status</th>
-                                            <th>Action</th>
+                                            <th class="nosort">Ação</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-
                                             <?php foreach ($usuarios as $usuario): ?>
 
                                                 <td><?php echo $usuario->id; ?></td>
@@ -42,7 +41,7 @@
                                                 <td><?php echo ($usuario->active == 1 ? '<span class="badge badge-success">Ativo</span' : '<span class="badge badge-danger">Inativo</span>'); ?></td>
 
                                                 <td>
-                                                    <a href="#" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
+                                                    <a href="<?php echo base_url('restrita/usuarios/core/'.$usuario->id);?>" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
                                                     <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i></a>
                                                 </td>
 
