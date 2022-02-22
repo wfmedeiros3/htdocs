@@ -32,5 +32,12 @@ class Login extends CI_Controller {
             redirect('restrita/login');
         }
     }
+    
+    public function logout() {
+        
+        $this->ion_auth->logout();
+        redirect('restrita/login');
+        
+    }
 
 }
