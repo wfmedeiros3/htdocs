@@ -11,10 +11,10 @@ class Marcas extends CI_Controller {
             redirect('restrita/login');
         }
     }
-    
+
     public function index() {
-        
-        
+
+
         $data = array(
             'titulo' => 'Marcas cadastradas',
             'styles' => array(
@@ -30,19 +30,105 @@ class Marcas extends CI_Controller {
             'marcas' => $this->core_model->get_all('marcas'),
         );
 
-           /**echo '<pre>';
+        /*         * echo '<pre>';
           print_r($data['marcas']);
           exit(); */
-         
+
 
         $this->load->view('restrita/layout/header', $data);
 
         $this->load->view('restrita/marcas/index');
 
         $this->load->view('restrita/layout/footer');
-        
-        
+    }
+
+    public function core($marca_id = NULL) {
+
+        if (!$marca_id) {
+
+            //cadastrando....
+        } else {
+
+            if (! $marca = $this->core_model->get_by_id('marcas', array('marca_id' => $marca_id))) {
+                $this->session->set_flashdata('erro', 'A marca não foi encontrada');
+                redirect('restrita/marcas');
+            } else {
+
+                //editando
+                
+                $this->form_validation->set_rules('marca_nome','Nome da marca','trim|required|min_length[2]|max_length[40]|callback_valida_nome_marca');
+                
+                if($this->form_validation->run()){
+                    
+                    $data = elements(
+                            array(
+                                'marca_nome',
+                                'marca_ativa',
+                                'marca_meta_link',
+                            ), $this->input->post()
+                            );
+                            
+                            //criando o metalink
+                            $data['marca_meta_link'] = url_amigavel($data['marca_nome']);
+
+                    
+                    $data = html_escape($data);
+                    
+                    $this->core_model->update('marcas', $data, array('marca_id' => $marca_id));
+                    redirect('restrita/marcas');
+                                       
+                } else {
+                    
+                    //erro de validação
+                    
+                    $data = array(
+                    'titulo' => 'Editar Marca',
+                    'marca' => $marca,
+                );
+
+                /*                 * echo '<pre>';
+                  print_r($data['marcas']);
+                  exit(); */
+
+
+                $this->load->view('restrita/layout/header', $data);
+
+                $this->load->view('restrita/marcas/core');
+
+                $this->load->view('restrita/layout/footer');
+                    
+                }
+                
+
+                
+            }
+        }
     }
     
-}
+        public function valida_nome_marca($marca_nome) {
 
+        $marca_id = $this->input->post('marca_id');
+        if (!$marca_id) {
+
+            //cadastrando...
+
+            if ($this->core_model->get_by_id('marcas', array('marca_nome' => $marca_nome))) {
+                $this->form_validation->set_message('valida_nome_marca', 'Essa marca já foi cadastrada.');
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+
+            //editando...
+
+            if ($this->core_model->get_by_id('marcas', array('marca_nome' => $marca_nome, 'marca_id !=' =>$marca_id))) {
+                $this->form_validation->set_message('valida_nome_marca', 'Essa marca já foi cadastrada.');
+                return false;
+            } else {
+                return true;
+            }
+        }
+    }
+
+}

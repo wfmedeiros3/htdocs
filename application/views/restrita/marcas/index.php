@@ -58,6 +58,7 @@
                                             </th>
                                             <th>Nome da marca</th>
                                             <th>Meta link da marca</th>
+                                            <th>Data de criação</th>
                                             <th>Ativa</th>
                                             <th class="nosort">Ação</th>
                                         </tr>
@@ -70,6 +71,7 @@
                                                 <td><?php echo $marca->marca_id; ?></td>
                                                 <td><?php echo $marca->marca_nome; ?></td>
                                                 <td><i data-feather="link-2" class="text-info"></i>&nbsp;<?php echo $marca->marca_meta_link; ?></td>
+                                                <td><?php echo formata_data_banco_com_hora($marca->marca_data_criacao); ?></td>
                                                 <td><?php echo ($marca->marca_ativa == 1 ? '<span class="badge badge-success">Sim</span' : '<span class="badge badge-danger">Nâo</span>'); ?></td>
 
                                                 <td>
