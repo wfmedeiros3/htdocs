@@ -106,12 +106,20 @@ class Master extends CI_Controller {
 
                 if ($this->form_validation->run()) {
                     
- //                   if($this->input->post('categoria_pai_ativa') == 0){
- //                       
- //                       //Definir proibição de desativação
- //    
-//                       
-//                    }
+                  if($this->input->post('categoria_pai_ativa') == 0){
+                     
+                    if($this->core_model->get_by_id('categorias', array('categoria_pai_id' => $categoria_pai_id))){
+                        $this->session->set_flashdata('erro', 'Essa categoria pai não pode ser desativada, pois está vinculada a uma categoria filha');
+                redirect('restrita/master');
+                        
+                        
+                    }
+                      
+                      
+                      
+                      
+                      
+                                            }
                     
                     $data = elements(
                             
