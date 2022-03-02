@@ -20,6 +20,8 @@
 <!-- Template JS File -->
 <script src="<?php echo base_url('public/assets/js/scripts.js'); ?>"></script>
 
+<script src="<?php echo base_url('public/assets/js/util.js'); ?>"></script>
+
 <?php if (isset($scripts)): ?>
 
     <?php foreach ($scripts as $script): ?> 
