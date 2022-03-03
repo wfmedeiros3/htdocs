@@ -65,6 +65,8 @@
                                     <label for="inputState">Categoria</label>
                                     <select id="inputState" class="form-control" name="produto_categoria_id">
                                         
+                                        <option value="">Escolha... </option>
+                                        
                                        <?php foreach ($categorias as $categoria):?>
                                         
                                         
@@ -93,6 +95,8 @@
                                 <div class="form-group col-md-3">
                                     <label for="inputState">Marcas</label>
                                     <select id="inputState" class="form-control" name="produto_categoria_id">
+                                        
+                                        <option value="">Escolha... </option>
                                         
                                        <?php foreach ($marcas as $marca):?>
                                         
