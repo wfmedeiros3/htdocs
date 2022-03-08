@@ -1,7 +1,7 @@
 $(document).ready(function ()
 {
     $("#fileuploader").uploadFile({
-        url: BASE_URL + "restrict/produtos/upload",
+        url: BASE_URL + "restrita/produtos/upload",
         fileName: "foto_produto",
         returnType: "json",
         onSuccess: function (files, data) {
