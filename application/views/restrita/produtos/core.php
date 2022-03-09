@@ -289,7 +289,7 @@
                                             <li>
                                                 
                                                 <img src="<?php echo base_url('uploads/produtos/'. $foto->foto_caminho); ?>" width="80" class="img-thumbnail mr-1 mb-2">
-                                                <input type="text" name="fotos_produtos[]" value="<?php echo $foto->foto_caminho; ?>">
+                                                <input type="hidden" name="fotos_produtos[]" value="<?php echo $foto->foto_caminho; ?>">
                                                 <a href="javascript:(void)" class="btn btn-danger d-block btn-icon mx-auto mb-30 btn-remove"><i class="fas fa-times"></i></a>
                                                 
                                             </li>
