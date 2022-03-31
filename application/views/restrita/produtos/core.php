@@ -94,7 +94,7 @@
 
                                 <div class="form-group col-md-2">
                                     <label for="inputState">Marcas</label>
-                                    <select id="" class="form-control" name="produto_categoria_id">
+                                    <select id="" class="form-control" name="produto_marca_id">
 
                                         <option value="">Escolha... </option>
 

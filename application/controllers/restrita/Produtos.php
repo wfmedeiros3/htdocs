@@ -30,9 +30,9 @@ class Produtos extends CI_Controller {
             'produtos' => $this->produtos_model->get_all(),
         );
 
-        // echo '<pre>';
-        // print_r($data['produtos']);
-        // exit();
+       // echo '<pre>';
+        //print_r($data['produtos']);
+       // exit();
 
 
         $this->load->view('restrita/layout/header', $data);
@@ -87,9 +87,11 @@ class Produtos extends CI_Controller {
                         'produto_ativo',
                         'produto_destaque',
                         'produto_controlar_estoque',
-                        'produto_descricao'
+                        'produto_descricao',
                             ), $this->input->post()
                     );
+                    
+                    
 
                     //Remove a virgula do valor
 
@@ -106,11 +108,11 @@ class Produtos extends CI_Controller {
 
                     redirect('restrita/produtos');
 
-
-
-                    // echo '<pre>';
+                    //echo '<pre>';
                     //  print_r($this->input->post());
-                    // exit();
+                    //exit();
+
+                     
                 } else {
 
                     // erro de validações
@@ -133,9 +135,9 @@ class Produtos extends CI_Controller {
                         'marcas' => $this->core_model->get_all('marcas', array('marca_ativa' => 1)),
                     );
 
-                    // echo '<pre>';
-                    // print_r($data['produto']);
-                    //  exit();
+                   // echo '<pre>';
+                    //print_r($data['produto']);
+                     // exit();
 
 
                     $this->load->view('restrita/layout/header', $data);
