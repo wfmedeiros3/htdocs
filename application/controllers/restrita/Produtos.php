@@ -70,8 +70,14 @@ class Produtos extends CI_Controller {
                 $this->form_validation->set_rules('produto_quantidade_estoque', 'Quantidade em estoque', 'trim|required|integer');
                 $this->form_validation->set_rules('produto_descricao', 'Descrição do produto', 'trim|required|min_length[10]|max_length[5000]');
 
+                    
 
                 if ($this->form_validation->run()) {
+                    
+                    //echo '<pre>';
+                    //print_r($this->input->post());
+                    //exit();
+                    
 
                     $data = elements(
                             array(
@@ -104,6 +110,24 @@ class Produtos extends CI_Controller {
                     $data = html_escape($data);
 
                     $this->core_model->update('produtos', $data, array('produto_id' => $produto_id));
+                    
+                    
+                    // recuperar fotos do post
+                    $fotos_produtos = $this->input->post('fotos_produtos');
+                    
+                    $total_fotos = count($fotos_produtos);
+                    
+                    for($i = 0; $i < $total_fotos; $i++ ){
+                        
+                        $data = array(
+                            'foto_produto_id' => $produto_id,
+                            'foto_caminho' => $fotos_produtos[$i],
+                            
+                        );
+                        
+                        $this->core_model->insert('produtos_fotos', $data);
+                        
+                    };
 
 
                     redirect('restrita/produtos');
