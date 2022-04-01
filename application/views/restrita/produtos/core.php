@@ -51,7 +51,7 @@
 
                                 <div class="form-group col-md-2">
                                     <label>Código do produto</label>
-                                    <input type="text" name="produto_codigo" class="form-control border-0" value="<?php echo (isset($produto) ? $produto->produto_codigo : set_value('produto_codigo')); ?>" readonly="">
+                                    <input type="text" name="produto_codigo" class="form-control border-0" value="<?php echo (isset($produto) ? $produto->produto_codigo : $codigo_gerado); ?>" readonly="">
                                     <?php echo form_error('produto_codigo', '<div class="text-danger">', '</div>'); ?>
                                 </div>
 

@@ -34,12 +34,12 @@ class Core_model extends CI_Model {
 
         if ($tabela && $this->db->table_exists($tabela) && is_array($data)) {
 
+            $this->db->insert($tabela, $data);
+            
             //Insere na sessão o ultimo ID inserido na base de dados
             if ($get_last_id) {
                 $this->session->set_userdata('last_id', $this->db->insert_id());
             }
-            
-            $this->db->insert($tabela, $data);
 
             if ($this->db->affected_rows() > 0) {
                 $this->session->set_flashdata('sucesso', 'Dados salvos com sucesso!');
@@ -68,9 +68,9 @@ class Core_model extends CI_Model {
     }
 
     public function delete($tabela = NULL, $condicoes = NULL) {
-        
+
         if ($tabela && $this->db->table_exists($tabela) && is_array($condicoes)) {
-            
+
             if ($this->db->delete($tabela, $condicoes)) {
 
                 $this->session->set_flashdata('sucesso', 'Registro excluído com sucesso!');
@@ -78,10 +78,21 @@ class Core_model extends CI_Model {
 
                 $this->session->set_flashdata('erro', 'Não foi possível excluir o registro');
             }
-            
-        }else{
+        } else {
             return false;
         }
+    }
+
+    public function generate_unique_code($tabela = NULL, $tipo_codigo = NULL, $tamanho_codigo = NULL, $campo_procura = NULL) {
+
+        do {
+            $codigo = random_string($tipo_codigo, $tamanho_codigo);
+            $this->db->where($campo_procura, $codigo);
+            $this->db->from($tabela);
+            
+        } while ($this->db->count_all_results() >= 1);
+        
+        return $codigo;
     }
 
 }

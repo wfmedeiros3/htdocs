@@ -73,7 +73,7 @@
                                                 <td><?php echo $produto->produto_nome; ?></td>
                                                 <td><?php echo $produto->marca_nome; ?></td>
                                                 <td><?php echo $produto->categoria_nome; ?></td>
-                                                <td><?php echo number_format($produto->produto_valor,2); ?></td>
+                                                <td><?php echo 'R$&nbsp;'.number_format($produto->produto_valor,2); ?></td>
                                                 <td><?php echo ($produto->produto_ativo == 1 ? '<span class="badge badge-success">Sim</span' : '<span class="badge badge-danger">Nâo</span>'); ?></td>
 
                                                 <td>
