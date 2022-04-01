@@ -108,14 +108,22 @@ class Produtos extends CI_Controller {
                     $data['produto_meta_link'] = url_amigavel($data['produto_nome']);
 
                     $data = html_escape($data);
+                    
+                    //atualiza produto
 
                     $this->core_model->update('produtos', $data, array('produto_id' => $produto_id));
+                    
+                    //exclui imagens antigas do produto
+                    
+                    $this->core_model->delete('produtos_fotos', array('foto_produto_id' =>$produto_id));
                     
                     
                     // recuperar fotos do post
                     $fotos_produtos = $this->input->post('fotos_produtos');
                     
-                    $total_fotos = count($fotos_produtos);
+                    if($fotos_produtos){
+                        
+                        $total_fotos = count($fotos_produtos);
                     
                     for($i = 0; $i < $total_fotos; $i++ ){
                         
@@ -128,6 +136,10 @@ class Produtos extends CI_Controller {
                         $this->core_model->insert('produtos_fotos', $data);
                         
                     };
+                        
+                    }
+                    
+                    
 
 
                     redirect('restrita/produtos');
