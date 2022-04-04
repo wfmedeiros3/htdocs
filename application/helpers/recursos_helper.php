@@ -2,6 +2,27 @@
 
 defined('BASEPATH') or exit('Ação não permitida');
 
+//enviando informações do sistema para o header e o footer
+function info_header_footer(){
+    
+    $CI = & get_instance();
+    
+    $sistema = $CI->core_model->get_by_id('sistema', array('sistema_id' => 1));
+    
+    return $sistema;
+    
+}
+
+// grandes marcas para o navbar
+function grandes_marcas_navbar(){
+    
+    $CI = & get_instance();
+    
+    $grandes_marcas = $CI->loja_model->get_grandes_marcas();
+    
+    return $grandes_marcas;
+    
+}
 
 function url_amigavel($string = NULL) {
     $string = remove_acentos($string);

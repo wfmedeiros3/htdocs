@@ -5,26 +5,31 @@
                     <div class="container">
                         <div class="row">
                             <!-- Begin Header Top Left Area -->
-                            <div class="col-lg-3 col-md-4">
+                            <div class="col-lg-4 col-md-4">
                                 <div class="header-top-left">
                                     <ul class="phone-wrap">
-                                        <li><span>Telephone Enquiry:</span><a href="#">(+123) 123 321 345</a></li>
+                                        <?php $sistema = info_header_footer(); ?>
+                                        <li><span>Nossos telefones:</span><?php echo $sistema->sistema_telefone_fixo .' - ' . $sistema->sistema_telefone_movel ?></li>
                                     </ul>
                                 </div>
                             </div>
                             <!-- Header Top Left Area End Here -->
                             <!-- Begin Header Top Right Area -->
-                            <div class="col-lg-9 col-md-8">
+                            <div class="col-lg-8 col-md-8">
                                 <div class="header-top-right">
                                     <ul class="ht-menu">
                                         <!-- Begin Setting Area -->
                                         <li>
-                                            <div class="ht-setting-trigger"><span>Setting</span></div>
+                                            <div class="ht-setting-trigger"><span>Grandes marcas</span></div>
                                             <div class="setting ht-setting">
                                                 <ul class="ht-setting-list">
-                                                    <li><a href="login-register.html">My Account</a></li>
-                                                    <li><a href="checkout.html">Checkout</a></li>
-                                                    <li><a href="login-register.html">Sign In</a></li>
+                                                    <?php $grandes_marcas = grandes_marcas_navbar();?>
+                                                    
+                                                    <?php foreach ($grandes_marcas as $marca):?>
+                                                    
+                                                    <li><a href="#"><?php echo $marca->marca_nome; ?></a></li>
+                                                    
+                                                    <?php endforeach;?>
                                                 </ul>
                                             </div>
                                         </li>
