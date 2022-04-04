@@ -24,6 +24,28 @@ function grandes_marcas_navbar(){
     
 }
 
+// categorias pai navbar
+function categorias_pai_navbar() {
+    
+    $CI = & get_instance();
+    
+    $categorias_pai = $CI->loja_model->get_categorias_pai();
+    
+    return $categorias_pai;
+    
+}
+
+// recupera as categorias filhas de acordo com a categoria pai id como parametro
+function categorias_filhas_navbar($categoria_pai_id = NULL) {
+    
+    $CI = & get_instance();
+    
+    $categorias_filhas = $CI->loja_model->get_categorias_filhas($categoria_pai_id);
+    
+    return $categorias_filhas;
+    
+}
+
 function url_amigavel($string = NULL) {
     $string = remove_acentos($string);
     return url_title($string, '-', TRUE);

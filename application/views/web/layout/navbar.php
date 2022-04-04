@@ -236,14 +236,29 @@
                                 <div class="hb-menu">
                                     <nav>
                                         <ul>
-                                            <li class="dropdown-holder"><a href="index.html">Home</a>
-                                                <ul class="hb-dropdown">
-                                                    <li class="active"><a href="index.html">Home One</a></li>
-                                                    <li><a href="index-2.html">Home Two</a></li>
-                                                    <li><a href="index-3.html">Home Three</a></li>
-                                                    <li><a href="index-4.html">Home Four</a></li>
-                                                </ul>
+                                            <li class="dropdown-holder"><a href="<?php echo base_url('/') ?>">Home</a>                                              
                                             </li>
+                                            
+                                            <?php $categorias_pai = categorias_pai_navbar(); ?>
+                                            
+                                            <?php foreach ($categorias_pai as $cat_pai): ?>
+                                            
+                                            <?php $categorias_filhas = categorias_filhas_navbar($cat_pai->categoria_pai_id); ?>
+                                            
+                                            <li class="dropdown-holder"><a href="index.html"><?php echo $cat_pai->categoria_pai_nome; ?></a>
+                                                <ul class="hb-dropdown">
+                                                    <?php foreach ($categorias_filhas as $cat_filha):?>
+                                                    
+                                                    <li class="active"><a href="index.html"><?php echo $cat_filha->categoria_nome; ?></a></li>
+                                                    
+                                                    <?php endforeach; ?>
+                                                    
+                                                </ul>
+                                                
+                                            </li>
+                                            
+                                            <?php endforeach; ?>
+                                            
                                             <li class="megamenu-holder"><a href="shop-left-sidebar.html">Shop</a>
                                                 <ul class="megamenu hb-megamenu">
                                                     <li><a href="shop-left-sidebar.html">Shop Page Layout</a>
