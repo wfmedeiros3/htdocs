@@ -46,18 +46,10 @@
         
         <style>
             
-            .hb-menu nav > ul > li:first-child > a::after{
+            .hb-menu nav > ul > li > a::after{
                 content: "";
             }
-            
-            .hb-menu nav > ul > li:last-child > a::after{
-                content: "\f107";
-            }
-            
-            .hb-menu nav > ul > li:nth-last-child(-n+2) {
-                margin-right: auto;
-            }
-            
+           
             
         </style>
         

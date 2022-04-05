@@ -2,6 +2,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
+    
+    public function __construct() {
+        parent::__construct();
+        
+        $this->load->helper('text');
+    }
 
 
 	public function index()
@@ -10,9 +16,13 @@ class Welcome extends CI_Controller {
                 
                 $data = array(
                     'titulo' => 'Seja bem vindo(a) à loja virtual '. $sistema->sistema_nome_fantasia,
+                    'produtos_destaques' => $this->loja_model->get_produtos_destaques($sistema->sistema_produtos_destaques),
                     
                 );
                 
+                //echo '<pre>';
+                //print_r($data['produtos_destaques']);
+                //exit();
                
             
 		$this->load->view('web/layout/header', $data);
