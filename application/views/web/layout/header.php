@@ -43,6 +43,25 @@
         <link rel="stylesheet" href="<?php echo base_url('public/web/css/responsive.css') ?>">
         <!-- Modernizr js -->
         <script src="<?php echo base_url('public/web/js/vendor/modernizr-2.8.3.min.js') ?>"></script>
+        
+        <style>
+            
+            .hb-menu nav > ul > li:first-child > a::after{
+                content: "";
+            }
+            
+            .hb-menu nav > ul > li:last-child > a::after{
+                content: "\f107";
+            }
+            
+            .hb-menu nav > ul > li:nth-last-child(-n+2) {
+                margin-right: auto;
+            }
+            
+            
+        </style>
+        
+        
     </head>
     <body>
     <!--[if lt IE 8]>
