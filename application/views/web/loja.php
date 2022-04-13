@@ -98,7 +98,7 @@
                                         <!-- single-product-wrap start -->
                                         <div class="single-product-wrap">
                                             <div class="product-image">
-                                                <a href="single-product.html">
+                                                <a href="<?php echo base_url('produto/'.$produto->produto_meta_link); ?>">
                                                     <img src="<?php echo base_url('uploads/produtos/'.$produto->foto_caminho);?>" alt="<?php echo word_limiter ($produto->produto_nome, 3); ?>">
                                                 </a>
                                                 <span class="sticker">New</span>
@@ -126,9 +126,7 @@
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#">Add to cart</a></li>
-                                                        <li><a class="links-details" href="wishlist.html"><i class="fa fa-heart-o"></i></a></li>
-                                                        <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
+                                                        <li class="add-cart active"><a href="<?php echo base_url('produto/'.$produto->produto_meta_link); ?>">Visualizar</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
